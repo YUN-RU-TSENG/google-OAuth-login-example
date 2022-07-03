@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>google oauth example</title>
+    </head>
+    <body>
+        <button>login by google</button>
+    </body>
+</html>
+
+<script>
+    document.querySelector('button').addEventListener('click', function () {
+        var url = 'https://accounts.google.com/o/oauth2/auth'
+        var params = {
+            client_id: '386760170314-pghm3r6r269odhbvemgh1mkb9mth2erc.apps.googleusercontent.com',
+            redirect_uri: 'http://localhost:5050/callback',
+            response_type: 'code',
+            scope: 'https://www.googleapis.com/auth/userinfo.email',
+        }
+        var queryString = Object.keys(params)
+            .map(function (key) {
+                return key + '=' + params[key]
+            })
+            .join('&')
+        window.location.href = url + '?' + queryString
+    })
+</script>
